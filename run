@@ -1,0 +1,7 @@
+#!/bin/sh
+
+##
+# Runit script for the serf agent SERVICE service.
+#
+
+exec serf agent --config-dir=/etc/SERVICE/config.d
