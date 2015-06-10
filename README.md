@@ -33,7 +33,7 @@ agents, open two terminals and in the first run:
 
 Next, ensure that you create a `./config.d/join.json` file as follows:
 
-```
+```json
 {
     "start_join": ["node1"]
 }
@@ -54,7 +54,7 @@ Serf agents can
 using multicasting.  To test this, ensure that you create a
 `./config.d/discover.json` file as follows:
 
-```
+```json
 {
     "discover": "my-cluster",
     "interface": "eth0"
@@ -64,7 +64,7 @@ using multicasting.  To test this, ensure that you create a
 Note that if you followed the example in the previous section, you *must* delete
 the `./config.d/join.json` file as otherwise this will be read as part of the
 serf configuration (you can have as many JSON files as you want in the
-configuration directory..
+configuration directory).
 
 Next, create as many serf agents as you want in the cluster by repeating this
 command (at least twice!).
@@ -82,10 +82,10 @@ the `serf` binary on the system.  The only prerequisite is that the system be 64
 bit and have the `make`, `curl` and `funzip` tools available.  `funzip` is
 usually bundled as part of the zip package.
 
-There is also a runit target which will install the necessary files for setting
-up a runit service.  By default typing in `make runit` will install a service
-called `serf`.  The name of the service can be customised by specifying the
-`SERVICE` make variable.  E.g. running `make runit -e SERVICE=foobar` will
+There is also a `runit` target which will install the necessary files for
+setting up a runit service.  By default typing in `make runit` will install a
+service called `serf`.  The name of the service can be customised by specifying
+the `SERVICE` make variable.  E.g. running `make runit -e SERVICE=foobar` will
 install a serf agent under the `foobar` runit service.  In order to customise
 the service you can add JSON serf configuration files to the
 `/etc/${SERVICE}/config.d` directory, as described in the previous section.
